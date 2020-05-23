@@ -10,7 +10,6 @@ function Layout({ setPosts }) {
     const q = variable
     const apiKey = "&apiKey=7d1ae7fbafc34a61b4509e7aac489d29"
 
-
     const handleSubmit = (e) => {
         setIsLoading(true)
         e.preventDefault();
@@ -21,6 +20,9 @@ function Layout({ setPosts }) {
                 setPosts(res.data.articles)
             }).catch((err) => {
                 console.log(err)
+                return(
+                    <h3>Error Loading Data</h3>
+                )
             })
     }
 
@@ -30,12 +32,15 @@ function Layout({ setPosts }) {
     else {
         return (
             <div>
-                <input type="text" placeholder="  Enter key to be searched"
+                <div style = {{textAlign: "center", fontFamily: "sans-serif"}}>
+                    <input type="text" placeholder="  Enter key to be searched"
                     style={{
                         width: "75%",
                         height: "50px",
                         border: "1px solid lightgrey",
-                        margin: "5px 15px"
+                        borderRadius: "5px",
+                        margin: "5px 15px",
+                        padding: "0px 10px"
                     }}
                     onChange={(e) => (setVariable(e.target.value))}
                 ></input>
@@ -44,13 +49,17 @@ function Layout({ setPosts }) {
                         border: "none",
                         width: "150px",
                         height: "50px",
-                        backgroundColor: "grey",
+                        borderRadius: "5px",
+                        backgroundColor: "#00adef",
+                        color: "white",
                         fontSize: "large",
                         margin: "5px 20px"
 
                     }}
                     onClick={handleSubmit}
                 >Search</button>
+                </div>
+
             </div>
 
         )
